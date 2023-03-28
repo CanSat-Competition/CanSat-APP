@@ -1,0 +1,6 @@
+PyQt5==5.15.6
+PyQt5-Qt5==5.15.2
+PyQt5-sip==12.9.1
+pyserial==3.5
+pyqtgraph==0.13.2
+open3d==0.17.0
