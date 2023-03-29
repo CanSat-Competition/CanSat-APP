@@ -20,6 +20,7 @@ from pyqtgraph.Qt import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
+        # MainWindow.showFullScreen()
         MainWindow.resize(1320, 900)
         MainWindow.setMinimumSize(QtCore.QSize(1320, 900))
         icon = QtGui.QIcon()
@@ -1348,7 +1349,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.ggtText.setText(_translate("MainWindow", "GARGANTUA"))
-        self.speedConst.setText(_translate("MainWindow", "speed:"))
+        self.speedConst.setText(_translate("MainWindow", "SPEED:"))
         self.speedInput.setText(_translate("MainWindow", "6 m/s"))
         self.heightConst.setText(_translate("MainWindow", "height:"))
         self.heightInput.setText(_translate("MainWindow", "220 m"))

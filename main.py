@@ -11,7 +11,6 @@ class MainWindow():
         self.main_win = QMainWindow()
         self.uic = Ui_MainWindow()
         self.uic.setupUi(self.main_win)
-
         self.serial = Function_UI()
         self.serialPort = serial.Serial()
         self.serial.update_port()
@@ -106,6 +105,18 @@ class MainWindow():
             self.uic.z_axis.rotate(self.uic.z_rotation_angle, 0, 0, 1)
             # End GYRO
             
+            #Time
+            self.uic.clockInput.setText(data.get('clocks').get('realtime'))
+            self.uic.startInput.setText(data.get('clocks').get('start_time'))
+            self.uic.breakInput.setText(data.get('clocks').get('break_time'))
+            self.uic.finishInput.setText(data.get('clocks').get('finish_time'))
+
+            #Speed
+            self.uic.speedInput.setText(f"{data.get('speed')} m/s")
+
+            #Height
+            self.uic.heightInput.setText(f"{data.get('height')} m")
+
         except:
             print('Loading...')
 
