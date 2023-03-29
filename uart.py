@@ -526,11 +526,18 @@ class Ui_MainWindow(object):
         self.cylinder = geometry.TriangleMesh.create_cylinder(radius=1.0, height=4.0)
         vertices = np.asarray(self.cylinder.vertices)
         faces = np.asarray(self.cylinder.triangles)
+        # self.colors = np.zeros((len(faces), 4))
+        # self.colors[:, 0] = 0.0
+        # self.colors[:, 1] = 1.0
+        # self.colors[:, 2] = 0.0 
+        # self.colors[::2, :] = [1.0, 1.0, 0.0, 1.0]
         self.colors = np.zeros((len(faces), 4))
-        self.colors[:, 0] = 0.0
-        self.colors[:, 1] = 1.0
-        self.colors[:, 2] = 0.0 
-        self.colors[::2, :] = [1.0, 1.0, 0.0, 1.0]
+        self.colors[:, 0] = 0.227
+        self.colors[:, 1] = 0.988
+        self.colors[:, 2] = 0.800 
+        self.colors[:, 3] = 1.0
+        self.colors[::2, :] = [0.231, 0.988, 0.800, 1.0]
+
 
         self.mesh_item = gl.GLMeshItem(vertexes=vertices, faces=faces, faceColors=self.colors, drawEdges=True)
 

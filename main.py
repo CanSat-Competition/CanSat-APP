@@ -72,7 +72,7 @@ class MainWindow():
                 if len(list) > 50:
                     list.pop(0)
                     chart.clear()
-                chart.plot(list)
+                chart.plot(list, pen="#3BFCCC")
                 # chart.setXRange(0,50)
 
             update_chart(self.uic.preaChart, self.pres_data, "preasure")
