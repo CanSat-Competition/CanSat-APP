@@ -8,7 +8,7 @@ class Function_UI(QObject):
         super().__init__()
 
         self.serialPort = serial.Serial()
-        self.serialPort.timeout = 0.5
+        # self.serialPort.timeout = 0.5
 
         self.baudList = {
             '4800':4800,
@@ -35,10 +35,13 @@ class Function_UI(QObject):
     
     def read_serial(self):
         while (self.alive.isSet() and self.serialPort.is_open):
-            data = self.serialPort.readline().decode("utf-8").strip()
-            if(len(data)>1):
-                self.data_available.emit(data)
-            print(data)
+            try:
+                data = self.serialPort.readline().decode("utf-8").strip()
+                if(len(data)>1):
+                    self.data_available.emit(data)
+                print(data)
+            except:
+                pass
         
     # def send_data(self, data):
     #     if(self.serialPort.is_open):

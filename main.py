@@ -32,7 +32,7 @@ class MainWindow():
         try:
             data = ast.literal_eval(data)
             #Hatalar Güncellenmesi
-            errors = data.get('ERRORS')
+            errors = data.get('errors')
             if errors.get('1') == 1:
                 self.uic.error1.setStyleSheet("background-color: red;\n"
                                                 "border-radius: 5px;\n"
@@ -76,18 +76,18 @@ class MainWindow():
                 chart.plot(list)
                 # chart.setXRange(0,50)
 
-            update_chart(self.uic.preaChart, self.pres_data, "pres")
+            update_chart(self.uic.preaChart, self.pres_data, "preasure")
             update_chart(self.uic.tempChart, self.temp_data, "temp")
             # End Charts
 
             # GYRO
-            self.uic.xInput.setText(str(data.get('GYRO').get('x')))
-            self.uic.yInput.setText(str(data.get('GYRO').get('y')))
-            self.uic.zInput.setText(str(data.get('GYRO').get('z')))
+            self.uic.xInput.setText(str(data.get('gyro').get('x')))
+            self.uic.yInput.setText(str(data.get('gyro').get('y')))
+            self.uic.zInput.setText(str(data.get('gyro').get('z')))
 
-            self.uic.x_rotation_angle = data.get('GYRO').get('x')
-            self.uic.y_rotation_angle = data.get('GYRO').get('y')
-            self.uic.z_rotation_angle = data.get('GYRO').get('z')
+            self.uic.x_rotation_angle = data.get('gyro').get('x')
+            self.uic.y_rotation_angle = data.get('gyro').get('y')
+            self.uic.z_rotation_angle = data.get('gyro').get('z')
 
             self.uic.mesh_item.rotate(self.uic.y_rotation_angle, 0, 1, 0)
             self.uic.mesh_item.rotate(self.uic.x_rotation_angle, 1, 0, 0)
