@@ -538,7 +538,6 @@ class Ui_MainWindow(object):
         self.colors[:, 3] = 1.0
         self.colors[::2, :] = [0.231, 0.988, 0.800, 1.0]
 
-
         self.mesh_item = gl.GLMeshItem(vertexes=vertices, faces=faces, faceColors=self.colors, drawEdges=True)
 
         self.gyroScreen.addItem(self.mesh_item)
@@ -1225,7 +1224,7 @@ class Ui_MainWindow(object):
         self.error1.setStyleSheet("border-bottom-right-radius: 7px;\n"
 "border-bottom-left-radius: 0px;\n"
 "border-top-right-radius: 7px;\n"
-"background-color: rgb(255, 0, 0);\n"
+"background-color: rgb(0, 155, 0);\n"
 "border-top-left-radius: 0px;")
         self.error1.setObjectName("error1")
         self.horizontalLayout_2.addWidget(self.error1)
@@ -1259,7 +1258,7 @@ class Ui_MainWindow(object):
 "border-bottom-left-radius: 0px;\n"
 "border-top-right-radius: 7px;\n"
 "border-top-left-radius: 0px;\n"
-"background-color: rgb(255, 0, 0);")
+"background-color: rgb(0, 155, 0);")
         self.error3.setObjectName("error3")
         self.horizontalLayout_6.addWidget(self.error3)
         self.horizontalLayout_6.setStretch(0, 1)

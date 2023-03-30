@@ -32,38 +32,18 @@ class MainWindow():
             data = ast.literal_eval(data)
             #Hatalar Güncellenmesi
             errors = data.get('errors')
-            if errors.get('1') == 1:
-                self.uic.error1.setStyleSheet("background-color: red;\n"
-                                                "border-radius: 5px;\n"
-                                                "border-width: 5px;")
-            else:
-                self.uic.error1.setStyleSheet("background-color: green;\n"
-                                            "border-radius: 5px;\n"
-                                            "border-width: 5px;")
-            if errors.get('2') == 1:
-                self.uic.error2.setStyleSheet("background-color: red;\n"
-                                                "border-radius: 5px;\n"
-                                                "border-width: 5px;")
-            else:
-                self.uic.error2.setStyleSheet("background-color: green;\n"
-                                            "border-radius: 5px;\n"
-                                            "border-width: 5px;")
-            if errors.get('3') == 1:
-                self.uic.error3.setStyleSheet("background-color: red;\n"
-                                                "border-radius: 5px;\n"
-                                                "border-width: 5px;")
-            else:
-                self.uic.error3.setStyleSheet("background-color: green;\n"
-                                            "border-radius: 5px;\n"
-                                            "border-width: 5px;")
-            if errors.get('4') == 1:
-                self.uic.error4.setStyleSheet("background-color: red;\n"
-                                                "border-radius: 5px;\n"
-                                                "border-width: 5px;")
-            else:
-                self.uic.error4.setStyleSheet("background-color: green;\n"
-                                            "border-radius: 5px;\n"
-                                            "border-width: 5px;")
+
+            error_list = [self.uic.error1, self.uic.error2, self.uic.error3, self.uic.error4]
+
+            for i, error in enumerate(error_list):
+                if errors.get(str(i+1)) == 1:
+                    error.setStyleSheet("background-color: red;\n"
+                                        "border-radius: 5px;\n"
+                                        "border-width: 5px;")
+                else:
+                    error.setStyleSheet("background-color: green;\n"
+                                        "border-radius: 5px;\n"
+                                        "border-width: 5px;")
                 
             #Charts
             def update_chart(chart, list, key):
@@ -156,39 +136,6 @@ class MainWindow():
         # ComboBox
         self.uic.portInput.setEnabled(True)
         self.uic.baudrateInput.setEnabled(True)
-
-        # Errors
-        self.uic.error1.setStyleSheet("border-bottom-right-radius: 7px;\n"
-                                        "border-bottom-left-radius: 0px;\n"
-                                        "border-top-right-radius: 7px;\n"
-                                        "border-top-left-radius: 0px;\n"
-                                        "background-color: rgb(0, 155, 0);")
-        self.uic.error2.setStyleSheet("border-bottom-right-radius: 7px;\n"
-                                        "border-bottom-left-radius: 0px;\n"
-                                        "border-top-right-radius: 7px;\n"
-                                        "border-top-left-radius: 0px;\n"
-                                        "background-color: rgb(0, 155, 0);")
-        self.uic.error3.setStyleSheet("border-bottom-right-radius: 7px;\n"
-                                        "border-bottom-left-radius: 0px;\n"
-                                        "border-top-right-radius: 7px;\n"
-                                        "border-top-left-radius: 0px;\n"
-                                        "background-color: rgb(0, 155, 0);")
-        self.uic.error4.setStyleSheet("border-bottom-right-radius: 7px;\n"
-                                        "border-bottom-left-radius: 0px;\n"
-                                        "border-top-right-radius: 7px;\n"
-                                        "border-top-left-radius: 0px;\n"
-                                        "background-color: rgb(0, 155, 0);")
-        
-        # Times
-        # self.uic.saatInput.setText("")
-        # self.uic.baslangicInput.setText("")
-        # self.uic.ayrilmaInput.setText("")
-        # self.uic.inisInput.setText("")
-        # self.uic.toplamInput.setText("")
-
-        # GYRO
-        # self.uic.xInput.setText("0")
-        # self.uic.yInput.setText("0")
 
     def select_file(self, btn):
         options = QFileDialog.Options()
