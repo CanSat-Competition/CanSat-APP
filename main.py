@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
 from uart import Ui_MainWindow
 from functions import Function_UI
 import serial, serial.tools.list_ports
+import time
 
 class MainWindow():
     pres_data, temp_data = list(), list()
@@ -26,7 +27,6 @@ class MainWindow():
         # self.uic.secBtn.clicked.connect(lambda: self.select_file(btn=True))
         # self.uic.sendCommand.clicked.connect(lambda: self.terminal(''))
         # self.uic.commandInput.returnPressed.connect(lambda: self.terminal('', btn=True))
-
     def update_views(self, data):
         try:
             data = ast.literal_eval(data)
@@ -93,9 +93,11 @@ class MainWindow():
 
             #Speed
             self.uic.speedInput.setText(f"{data.get('speed')} m/s")
+            self.uic.speedScreen.setValue(int(data.get('speed')))
 
             #Height
             self.uic.heightInput.setText(f"{data.get('height')} m")
+            self.uic.heightScreen.setValue(int(data.get('height')))
 
         except:
             print('Loading...')

@@ -155,7 +155,19 @@ class Ui_MainWindow(object):
         self.speedBg.setObjectName("speedBg")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.speedBg)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
-        self.speedScreen = QtWidgets.QWidget(self.speedBg)
+        
+        #Speed
+        self.speedScreen = QtWidgets.QDial()
+        # self.dial = QtWidgets.QDial(self.speedScreen)
+        # self.speedScreen.setFixedSize(250, 250)
+        self.speedScreen.setRange(1, 50)
+        self.speedScreen.setNotchesVisible(True)
+        self.speedScreen.setPageStep(5)
+        self.speedScreen.setDisabled(True)
+        self.speedScreen.setFixedHeight(200)
+        #Speed End
+        
+
         self.speedScreen.setObjectName("speedScreen")
         self.verticalLayout_6.addWidget(self.speedScreen)
         self.speedTextBg = QtWidgets.QWidget(self.speedBg)
@@ -209,14 +221,40 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.speedBg)
         self.heightBg = QtWidgets.QWidget(self.leftwidget)
         self.heightBg.setStyleSheet("border-bottom-right-radius: 0px;\n"
-"border-bottom-left-radius: 0px;\n"
-"border-top-right-radius: 0px;\n"
-"border-top-left-radius: 0px;\n"
-"border: 0px;")
+                                        "border-bottom-left-radius: 0px;\n"
+                                        "border-top-right-radius: 0px;\n"
+                                        "border-top-left-radius: 0px;\n"
+                                        "background-color: solid;\n"
+                                        "width:100%;\n"
+                                        "border: 0px;")
         self.heightBg.setObjectName("heightBg")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.heightBg)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.heightScreen = QtWidgets.QWidget(self.heightBg)
+
+        #Height
+        self.heightScreen = QtWidgets.QSlider(QtCore.Qt.Vertical)
+        self.heightScreen.setRange(1, 300)
+        self.heightScreen.setPageStep(5)
+        self.heightScreen.setDisabled(True)
+        self.heightScreen.setStyleSheet("""
+                                        QSlider:vertical {
+                                                width:100%;
+                                                margin-left: 70%;
+                                        }
+                                        QSlider::groove:vertical {
+                                                width: 1px;
+                                                background: #3BFCCC; 
+                                        }
+                                        QSlider::handle:vertical {
+                                                height: 30px;
+                                                margin-left: -15px;
+                                                margin-right: -15px;
+                                                border-radius: 15px;
+                                                background: qradialgradient(spread:reflect, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.6 #3BFCCC, stop:0.7 rgba(255, 255, 255, 100));
+                                        }""")
+
+        #Height End
+
         self.heightScreen.setObjectName("heightScreen")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.heightScreen)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
@@ -1365,7 +1403,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.ggtText.setText(_translate("MainWindow", "GARGANTUA"))
+        self.ggtText.setText(_translate("MainWindow", "WCU 2023"))
         self.speedConst.setText(_translate("MainWindow", "SPEED:"))
         self.speedInput.setText(_translate("MainWindow", "6 m/s"))
         self.heightConst.setText(_translate("MainWindow", "height:"))
