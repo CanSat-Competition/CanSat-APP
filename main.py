@@ -7,7 +7,7 @@ import serial, serial.tools.list_ports
 import time
 
 class MainWindow():
-    pres_data, temp_data = list(), list()
+    pres_data, temp_data = list(), list() # lists for charts data
     def __init__(self):
         self.main_win = QMainWindow()
         self.uic = Ui_MainWindow()
@@ -22,11 +22,9 @@ class MainWindow():
 
         # Clickable Buttons   
         self.serial.data_available.connect(self.update_views)
-
         self.uic.startBtn.clicked.connect(self.connect_or_disconnect)
-        # self.uic.secBtn.clicked.connect(lambda: self.select_file(btn=True))
-        # self.uic.sendCommand.clicked.connect(lambda: self.terminal(''))
-        # self.uic.commandInput.returnPressed.connect(lambda: self.terminal('', btn=True))
+        self.uic.terminalTextInput.returnPressed.connect(lambda: self.terminal(self.uic.terminalTextInput.text()))
+
     def update_views(self, data):
         try:
             data = ast.literal_eval(data)
@@ -102,22 +100,20 @@ class MainWindow():
         except:
             print('Loading...')
 
-        pass
 
     def connect_or_disconnect(self):
         if self.uic.startBtn.text() == 'START':
             # if len(Function_UI.data)>0:
             self.connect_serial()
-            # self.uic.terminalBrowser.append('<span style=\" font-size:8pt;\">starting: </span><span style=\" font-size:8pt; color:#306c00;\">succesfully</span>')
+            self.uic.terminalBrowser.append('<span style=\" font-size:8pt; color:#ffffff;\">starting: </span><span style=\" font-size:8pt; color:#00ff00;\">succesfully</span>')
         elif self.uic.startBtn.text() == 'STOP':
             if self.serial.serialPort.is_open:
                 self.disconnect_serial()
-                # self.uic.terminalBrowser.append('<span style=\" font-size:8pt;\">stoping: </span><span style=\" font-size:8pt; color:#306c00;\">succesfully</span>')
+                self.uic.terminalBrowser.append('<span style=\" font-size:8pt; color:#ffffff;\">stoping: </span><span style=\" font-size:8pt; color:#00ff00;\">succesfully</span>')
 
     def connect_serial(self):
         port = self.uic.portInput.currentText()
         baud = self.uic.baudrateInput.currentText()
-        print(port, baud)
         self.serial.serialPort.port = port
         self.serial.serialPort.baudrate = baud
         self.serial.connect_serial()
@@ -149,35 +145,23 @@ class MainWindow():
             self.uic.terminalBrowser.append(f'<span style=\" font-size:8pt;\">selected: {file_name}</span>')
         return file_name
 
-    def terminal(self, outcommand, btn):
-        if len(outcommand)>0:
-            command = outcommand
-        else:
-            command = self.uic.commandInput.text()
-        # self.uic.terminalBrowser.append(command)
-        self.uic.commandInput.setText('')
-        if command == 'saga -help':
-            self.uic.terminalBrowser.append("""<span style=\" font-size:8pt;\">use the 'saga' keyword</span><br>
-                                                <span style=\" font-size:8pt;\">-help: get help</span><br>
-                                                <span style=\" font-size:8pt;\">-clean: clean terminal</span><br>
-                                                <span style=\" font-size:8pt;\">-start: start system</span><br>
-                                                <span style=\" font-size:8pt;\">-stop: shut down the system</span><br>
-                                                <span style=\" font-size:8pt;\">-selectfile: select file</span><br>""")
-        elif command == 'saga -clean':
-            self.uic.terminalBrowser.clear()
-        elif command == 'saga -start':
-            self.connect_or_disconnect()
-        elif command == 'saga -stop':
-            if self.serial.serialPort.is_open:
-                self.connect_or_disconnect()
+    def terminal(self, command):
 
-        elif command == 'saga -selectfile':
-            self.uic.terminalBrowser.append(f'<span style=\" font-size:8pt;\">selected: {self.select_file(btn=False)}</span>')
+        def setNotficationText(process, p_color, result, r_color):
+            notfication = f"""<span style=\" font-size:8pt; color:{p_color};\">{process}: 
+                            </span><span style=\" font-size:8pt; 
+                            color:{r_color};\">{result}</span>"""
+            return notfication
+        
+        if command == 'ggt -start':
+            self.connect_serial()
+            self.uic.terminalBrowser.append(setNotficationText('starting', '#ffffff', 'succesfully', '#00ff00'))
+        elif command == 'ggt -stop':
+            self.disconnect_serial()
+            self.uic.terminalBrowser.append(setNotficationText('stoping', '#ffffff', 'succesfully', '#00ff00'))
 
 
-        elif command == 'saga -dev':
-                self.uic.terminalBrowser.append('<span style=\" font-size:8pt;\">Developed by Shohrat Agazada</span>')
-
+        self.uic.terminalTextInput.setText('')
     def send_data(self):
         data_send = self.uic.send_Text.toPlainText()
         self.serial.send_data(data_send)

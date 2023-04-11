@@ -160,7 +160,7 @@ class Ui_MainWindow(object):
         self.speedScreen = QtWidgets.QDial()
         # self.dial = QtWidgets.QDial(self.speedScreen)
         # self.speedScreen.setFixedSize(250, 250)
-        self.speedScreen.setRange(1, 50)
+        self.speedScreen.setRange(1, 100)
         self.speedScreen.setNotchesVisible(True)
         self.speedScreen.setPageStep(5)
         self.speedScreen.setDisabled(True)
@@ -1405,29 +1405,33 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.ggtText.setText(_translate("MainWindow", "WCU 2023"))
         self.speedConst.setText(_translate("MainWindow", "SPEED:"))
-        self.speedInput.setText(_translate("MainWindow", "6 m/s"))
+        self.speedInput.setText(_translate("MainWindow", "0 m/s"))
         self.heightConst.setText(_translate("MainWindow", "height:"))
-        self.heightInput.setText(_translate("MainWindow", "220 m"))
+        self.heightInput.setText(_translate("MainWindow", "0 m"))
         self.portText.setText(_translate("MainWindow", "PORT:"))
         self.baudrateText.setText(_translate("MainWindow", "BAUD RATE:"))
         self.ipText.setText(_translate("MainWindow", "CAMERA IP:"))
         self.cameraText.setText(_translate("MainWindow", "CAMERA"))
         self.terminalText.setText(_translate("MainWindow", "TERMINAL"))
         self.terminalBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Terminal\'; font-size:15pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#f3ff00;\"> connecting..</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\"> connected</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Mpu9250:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Ms5611:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Neo-6m:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Ov2735:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Xbee Pro S2C:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt; color:#00ff00;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; color:#ffffff;\">  .reset</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#22ff00;\"> resetted</span></p></body></html>"))
-        self.terminalTextInput.setText(_translate("MainWindow", "text"))
+                                                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                                "p, li { white-space: pre-wrap; }\n"
+                                                "</body></html>"))
+#         self.terminalBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+# "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+# "p, li { white-space: pre-wrap; }\n"
+# "</style></head><body style=\" font-family:\'Terminal\'; font-size:15pt; font-weight:400; font-style:normal;\">\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#f3ff00;\"> connecting..</span></p>\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\"> connected</span></p>\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Mpu9250:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Ms5611:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Neo-6m:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Ov2735:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#00ff00;\">  </span><span style=\" font-size:8pt; color:#ffffff;\">Xbee Pro S2C:</span><span style=\" font-size:8pt; color:#00ff00;\"> succes</span></p>\n"
+# "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt; color:#00ff00;\"><br /></p>\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'MS Shell Dlg 2\'; font-size:8pt; color:#ffffff;\">  .reset</span></p>\n"
+# "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; color:#22ff00;\"> resetted</span></p></body></html>"))
+        self.terminalTextInput.setText(_translate("MainWindow", ""))
         self.GpsText.setText(_translate("MainWindow", "GPS"))
         self.gyroText.setText(_translate("MainWindow", "GYRO"))
         self.xText.setText(_translate("MainWindow", " X AXIS:"))
